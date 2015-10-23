@@ -19,4 +19,4 @@ module.exports = {
       { test: /\.js?$/, loader: 'babel', include: SRC }
     ]
   }
-}
+};

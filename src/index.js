@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import 'core-js/shim';
 
 const tst = 'Hello there!';
