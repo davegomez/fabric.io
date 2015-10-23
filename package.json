@@ -1,9 +1,11 @@
 {
   "name": "fabricjs",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "EcmaScript Development Facility",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
+    "prepublish": "webpack -dp",
+    "start": "webpack -dw && npm test",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,15 +13,26 @@
     "url": "git+ssh://git@github.com/davegomez/fabricjs.git"
   },
   "keywords": [
-    "EcmaScript",
     "JavaScript",
+    "EcmaScript",
     "ES6",
-    "ES7"
+    "ES7",
+    "Webpack"
   ],
   "author": "David Gómez",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/davegomez/fabricjs/issues"
   },
-  "homepage": "https://github.com/davegomez/fabricjs#readme"
+  "homepage": "https://github.com/davegomez/fabricjs#readme",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-loader": "^5.3.2",
+    "core-js": "^1.2.3",
+    "eslint": "^1.7.3",
+    "eslint-loader": "^1.1.0",
+    "jscs": "^2.3.5",
+    "jscs-loader": "^0.2.0",
+    "webpack": "^1.12.2"
+  }
 }
