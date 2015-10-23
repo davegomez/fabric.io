@@ -1,5 +1,5 @@
 {
-  "name": "fabricjs",
+  "name": "fabric-io",
   "version": "0.1.0",
   "description": "EcmaScript Development Facility",
   "main": "lib/index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/davegomez/fabricjs.git"
+    "url": "git+ssh://git@github.com/davegomez/fabric.io.git"
   },
   "keywords": [
     "JavaScript",
@@ -22,9 +22,9 @@
   "author": "David Gómez",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/davegomez/fabricjs/issues"
+    "url": "https://github.com/davegomez/fabric.io/issues"
   },
-  "homepage": "https://github.com/davegomez/fabricjs#readme",
+  "homepage": "https://github.com/davegomez/fabric.io#readme",
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-eslint": "^4.1.3",
