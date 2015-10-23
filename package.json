@@ -2,7 +2,6 @@
   "name": "fabric-io",
   "version": "0.1.0",
   "description": "EcmaScript Development Facility",
-  "main": "lib/index.js",
   "scripts": {
     "prepublish": "webpack -dp",
     "start": "webpack -dw && npm test",
@@ -21,6 +20,10 @@
   ],
   "author": "David Gómez",
   "license": "MIT",
+  "preferGlobal": true,
+  "bin": {
+    "fabric-io": "lib/index.js"
+  },
   "bugs": {
     "url": "https://github.com/davegomez/fabric.io/issues"
   },
@@ -35,5 +38,8 @@
     "jscs": "^2.3.5",
     "jscs-loader": "^0.2.0",
     "webpack": "^1.12.2"
+  },
+  "dependencies": {
+    "cli": "^0.11.0"
   }
 }
