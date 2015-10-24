@@ -4,7 +4,6 @@
   "description": "EcmaScript Development Facility",
   "scripts": {
     "prepublish": "babel src --out-dir lib",
-    "start": "webpack -dw && npm test",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,7 +20,7 @@
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
-    "fabric-io": "lib/index.js"
+    "fabric-io": "lib/cli.js"
   },
   "bugs": {
     "url": "https://github.com/davegomez/fabric.io/issues"
