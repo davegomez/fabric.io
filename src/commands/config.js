@@ -48,7 +48,7 @@ const configOptions = [
 
 export default npmData =>
   inquirer.prompt(
-    configOptions, options =>
-      ({ npmData, options })
+    configOptions,
+    options => ({ npmData, options })
   );
 

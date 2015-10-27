@@ -2,8 +2,12 @@
 
 import 'babel/polyfill';
 import init from './commands/init';
-import getConfig from './commands/config';
+import config from './commands/config';
+import build from './commands/build';
+
+const throwError = err => new Error(err);
 
 init()
-  .then(getConfig)
-  .catch(err => new Error(err));
+  .then(config)
+  .then(build)
+  .catch(throwError);
