@@ -1,16 +1,5 @@
 import inquirer from 'inquirer';
 
-const OPTIONS = [
-  'babel',
-  'traceur',
-  'sass',
-  'less',
-  'stylus',
-  'mocha',
-  'jasmine',
-  'tape'
-];
-
 const linterList = options =>
   options
     .split(/ +/)
@@ -20,43 +9,30 @@ const linterList = options =>
       { name: option }
     );
 
-const validateSelection = function validateSelection(input) {
-  const done = this.async();
-  const option = input.toLowerCase();
-
-  done(
-    OPTIONS.includes(option) ?
-      true :
-      'Please choose one of the options above!'
-  );
-
-  return option;
-};
-
 const configOptions = [
   {
     type: 'input',
     name: 'transpiler',
-    message: 'Choose a transpiling engine: [Babel, Traceur]',
+    message: 'Transpiler: ',
     default: 'Babel',
-    validate: validateSelection
+    choices: ['Babel', 'Traceur']
   },
   {
-    type: 'input',
+    type: 'list',
     name: 'preprocessor',
-    message: 'Choose a CSS preprocessor: [SASS, LESS, Stylus]',
+    message: 'CSS preprocessor: ',
     default: 'SASS',
-    validate: validateSelection
+    choices: ['SASS', 'LESS', 'Stylus', 'None']
   },
   {
-    type: 'input',
+    type: 'list',
     name: 'tests',
-    message: 'Choose a testing framework: [Mocha, Jasmine, tape]',
+    message: 'Testing framework: ',
     default: 'Mocha',
-    validate: validateSelection
+    choices: ['Mocha', 'Jasmine', 'Tape', 'None']
   },
   {
-    when: response => response.tests.toLowerCase() === 'mocha' || 'jasmine',
+    when: response => response.tests === 'Mocha' || 'Jasmine',
     type: 'confirm',
     name: 'wallaby',
     message: 'Do you require Wallaby support?',
