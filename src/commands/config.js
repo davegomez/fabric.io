@@ -11,53 +11,62 @@ const OPTIONS = [
   'tape'
 ];
 
-const validateOptions = input => OPTIONS.includes(input.toLowerCase());
+const linterList = options =>
+  options
+    .split(/ +/)
+    .map(option =>
+      option.includes('*') ?
+      { name: option.replace('*', ''), checked: true } :
+      { name: option }
+    );
+
+const validateSelection = function validateSelection(input) {
+  const done = this.async();
+  const option = input.toLowerCase();
+
+  done(
+    OPTIONS.includes(option) ?
+      true :
+      'Please choose one of the options above!'
+  );
+
+  return option;
+};
 
 const configOptions = [
   {
     type: 'input',
     name: 'transpiler',
-    message: 'Transpiling Engine? [Babel, Traceur]',
+    message: 'Choose a transpiling engine: [Babel, Traceur]',
     default: 'Babel',
-    validate: validateOptions
+    validate: validateSelection
   },
   {
     type: 'input',
     name: 'preprocessor',
-    message: 'CSS Preprocessor? [SASS, LESS, Stylus]',
+    message: 'Choose a CSS preprocessor: [SASS, LESS, Stylus]',
     default: 'SASS',
-    validate: validateOptions
+    validate: validateSelection
   },
   {
     type: 'input',
     name: 'tests',
-    message: 'Testing Framework? [Mocha, Jasmine, tape]',
+    message: 'Choose a testing framework: [Mocha, Jasmine, tape]',
     default: 'Mocha',
-    validate: validateOptions
+    validate: validateSelection
   },
-  { type: 'confirm',
+  {
+    when: response => response.tests.toLowerCase() === 'mocha' || 'jasmine',
+    type: 'confirm',
     name: 'wallaby',
-    message: 'Wallaby Support?',
+    message: 'Do you require Wallaby support?',
     default: 'No'
   },
   {
     type: 'checkbox',
-    message: 'JavaScript Linters',
-    name: 'linters',
-    choices: [
-      {
-        name: 'ESLint'
-      },
-      {
-        name: 'JSCS'
-      },
-      {
-        name: 'JSHint'
-      },
-      {
-        name: 'JSLint'
-      }
-    ]
+    message: 'Select the JavaScript linters',
+    name: 'linter',
+    choices: linterList('ESLint* JSCS JSHint JSLint')
   }
 ];
 
