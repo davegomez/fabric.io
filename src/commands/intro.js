@@ -1,4 +1,12 @@
+/* eslint no-process-exit: 0 */
+/* global process */
+
 import inquirer from 'inquirer';
+import initFabric from './init';
+import open from './../tools/open';
+import log from './../tools/logger';
+
+const docs = 'https://www.npmjs.com/package/fabric-io';
 
 const choices = [
   'Create a new scaffold',
@@ -15,8 +23,20 @@ const introQuestions = {
   choices
 };
 
+const exit = () => {
+  log('exit')();
+  process.exit();
+};
+
+const resolutions = {
+  'Create a new scaffold': initFabric,
+  'Check the documentation': open(docs),
+  'Read the help': log('help'),
+  Exit: exit
+};
+
 const resolve = selection => {
-  console.log(selection);
+  resolutions[selection.resolve]();
 };
 
 export default () => inquirer.prompt(introQuestions, resolve);
