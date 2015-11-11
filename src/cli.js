@@ -2,19 +2,15 @@
 /* global process */
 
 import 'babel-polyfill';
-import minimist from 'minimist';
-import resolve from './commands/intro';
+import { docopt } from 'docopt';
+import pjson from './../package.json';
+import { help } from './partials/cli-templates';
 
-const options = {
-  alias: {
-    e: 'electron',
-    h: 'help',
-    n: 'node',
-    r: 'react',
-    v: 'version'
-  }
-};
+const options = docopt(help, {
+  argv: process.argv.slice(2),
+  help: true,
+  version: `v${pjson.version}`,
+  exit: true
+});
 
-const argv = minimist(process.argv.slice(2), options);
-
-argv._.includes('init') ? init(argv) : resolve();
+options.init ? build(options) : resolve(options);

@@ -11,14 +11,18 @@ configuration of your ECMAScript 2015 project. Answer all the questions as
 accurate as you can to start working in no time.
 ${row}`;
 
-export const help = `
-Usage: fabric-io init [options]
+export const help = `Usage:
+  fabric-io
+  fabric-io [options]
+  fabric-io init [options]
 
 General options:
-  -r, --react        # Create a React project scaffold
-  -e, --electron     # Create an Electron project scaffold
-  -n, --node         # Create an Node.js project scaffold
+  -h --help      Print this info and fabric.io's options and usage
+  -d --docs      Opens the documentation site on your browser
+  --version      Print fabric.io's version
 
-  -h, --help         # Print this info and fabric.io's options and usage
-  -v, --version      # Print version
+Init options:
+  -e --electron  Create an Electron project scaffold (supports React)
+  -n --node      Create a Node.js project scaffold
+  -r --react     Create a React project scaffold (supports Electron)
 `;
