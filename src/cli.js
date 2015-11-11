@@ -1,13 +1,20 @@
 #! /usr/bin/env node
 
-import 'babel/polyfill';
-import init from './commands/init';
-import config from './commands/config';
-import build from './commands/build';
+import 'babel-polyfill';
+import minimist from 'minimist';
+import resolve from './commands/intro';
+import { help } from './partials/cli-templates';
 
-const throwError = err => new Error(err);
+const options = {
+  alias: {
+    e: 'electron',
+    h: 'help',
+    n: 'node',
+    r: 'react',
+    v: 'version'
+  }
+};
 
-init()
-  .then(config)
-  .then(build)
-  .catch(throwError);
+const argv = minimist(process.argv.slice(2), options);
+
+argv._.includes('init') ? init() : resolve();
