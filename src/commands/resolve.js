@@ -2,8 +2,7 @@
 /* global process */
 
 import inquirer from 'inquirer';
-import initFabric from './init';
-import showInfo from './info';
+import initFabric from './build';
 import open from './../tools/open';
 import log from './../tools/logger';
 import validFlag from './../tools/flag-checker';
@@ -12,8 +11,8 @@ const docs = 'https://www.npmjs.com/package/fabric-io';
 
 const choices = [
   'Create a new scaffold',
-  'Check the documentation',
-  'Read the help',
+  'Read the documentation',
+  'Check the help',
   'Exit'
 ];
 
@@ -41,6 +40,6 @@ const resolve = selection => {
   resolutions[selection.resolve]();
 };
 
-export default argv => validFlag(argv, 'h', 'v') ?
-  showInfo(argv) :
+export default options => options['--docs'] ?
+  open(docs)() :
   inquirer.prompt(question, resolve);
