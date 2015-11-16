@@ -1,6 +1,6 @@
 {
   "name": "fabricjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "EcmaScript Development Facility",
   "main": "index.js",
   "scripts": {
